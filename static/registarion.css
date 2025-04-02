@@ -1,0 +1,77 @@
+/* Form Styling */
+.form {
+    margin-top: 105px;
+    margin-left: 445px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 550px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: black;
+    color: #fff;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+/* Label Styling */
+.form label {
+    font-size: 1em;
+    color:white;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    font-size: 20px;
+}
+
+/* Input Field Styling */
+.form .input {
+    background-color: #333;
+    color: white;
+    width: 100%; /* Set width to 100% to make all inputs the same width */
+    max-width: 300px; /* Maximum width for inputs */
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    font-size: medium;
+    margin: 0 auto; /* Center inputs horizontally */
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+/* Input Focus Styling */
+.form .input:focus {
+    border-color: skyblue;
+    box-shadow: 0 0 5px rgba(0, 191, 255, 0.6);
+}
+
+/* Submit Button Styling */
+.submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    background-color:blue;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit Hover Styling */
+.submit:hover {
+    background-color: #00bfff96;
+}
+#id_username{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+#id_email,#id_phone{
+    margin-left: 55px;
+}
+#id_password{
+    margin-left: 32px;
+}

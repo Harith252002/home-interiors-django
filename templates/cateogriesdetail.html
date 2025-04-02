@@ -1,0 +1,211 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categoriesdetails</title>
+    <link rel="stylesheet" href="{% static 'catd.css' %}">
+</head>
+    <style>
+        .buy-now-button {
+            display: block;
+            width: 615px;
+            height: 30px;
+            margin-top: 10px;
+            background-color:blueviolet;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        } 
+
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 40%;
+            height: 500px;
+            position: relative;
+            margin: auto;
+
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #consultation{
+            width: 150px;
+            margin: auto;
+        }
+    </style>
+</head>   
+<body>
+    <br><br>
+    {% if data1 %}
+    <nav id="nav_bar">
+        <li><img src="{% static 'images/logo1.png' %}" alt="Logo" id="logo_img"></li>
+        {% for i in data1 %}
+            <a href="{% url 'category:cateogries' i.id %}">{{ i.category_name }}</a>
+        {% endfor %}
+    </nav>
+   {% endif %}
+    <br><br>
+    <div id="container">
+        <img src="{{ data.pic.url }}" alt="" id="sub_img" class="zoom-img">
+        <h1 class="image-text">{{ data.name }}</h1>
+        <!-- <h1 class="image-text">{{ data.desc }}</h1> -->
+        <h1 class="image-text">{{ data.price }}</h1>
+    
+        <!-- Book Now button that opens the modal -->
+        <button class="buy-now-button" id="openModal">Book Consultation</button>
+        <!-- Add to Cart button -->
+        <a class="buy-now-button" href="{% url 'cart:add_to_cart' data.id %}" id="add_to_cart">Add to Cart</a>
+        <!-- popup -->
+    </div>
+        <div id="consultationModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Talk to a Designer</h2>
+                <br><br>
+                <form id="consultationForm">
+                    {% csrf_token %}
+                    <label for="name">Name</label>
+                    <input type="text" name="name" placeholder="Name" required class="input_box">
+                    <br><br>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="Email" required class="input_box">
+                    <br><br>
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="input_box">
+                    <br><br>
+                    <label for="category_name">Category</label>
+                    <input type="text" name="category_name" placeholder="Property Name" required class="input_box">
+                    <br><br>
+                    <!-- <input type="checkbox" id="whatsappUpdates" name="whatsapp" checked class="input_box">
+                    <label for="whatsappUpdates">Send me updates on WhatsApp</label>
+                    <br><br> -->
+                    <button type="submit" class="buy-now-button" id="consultation">Book Consultation</button>
+                    <br>
+                </form>
+                
+                <!-- Success Message -->
+                <p id="successMessage" style="color: green; display: none;">Consultation booked successfully!</p>
+                <p id="errorMessage" style="color: red; display: none;"></p>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("openModal").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("consultationModal").style.display = "flex";
+        });
+    
+        document.querySelector(".close").addEventListener("click", function() {
+            document.getElementById("consultationModal").style.display = "none";
+        });
+    
+        window.addEventListener("click", function(event) {
+            if (event.target === document.getElementById("consultationModal")) {
+                document.getElementById("consultationModal").style.display = "none";
+            }
+        });
+    
+        // Handle Form Submission via AJAX
+        document.getElementById("consultationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let formData = new FormData(this);
+            let csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+    
+            fetch("{% url 'cart:book_consultation' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRFToken": csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("successMessage").style.display = "block";
+                    document.getElementById("errorMessage").style.display = "none";
+                    setTimeout(() => {
+                        document.getElementById("consultationModal").style.display = "none";
+                        document.getElementById("successMessage").style.display = "none";
+                    }, 2000);
+                } else {
+                    document.getElementById("errorMessage").textContent = data.message;
+                    document.getElementById("errorMessage").style.display = "block";
+                }
+            })
+            .catch(error => {
+                document.getElementById("errorMessage").textContent = "Something went wrong!";
+                document.getElementById("errorMessage").style.display = "block";
+            });
+        });
+    </script>
+    <div id="div1">
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>We provide high-quality home interior solutions tailored to your style and budget.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'app:home' %}">Home Interiors</a></li>
+                        <li><a href="{% url 'app:business' %}">Business Interiors</a></li>
+                        <li><a href="{% url 'category:contactus' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: haritha@yhomeinteriors.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Address: Hyderabad, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <br>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <br>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Home Interiors. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+     

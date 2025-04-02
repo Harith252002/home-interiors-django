@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Estimate</title>
+    <link rel="stylesheet" href="{% static 'get.css' %}">
+    <script src="{% static 'get.js' %}"></script>
+</head>
+<body>
+<!-- Get Free Estimate Button -->
+<nav class="navbar">
+    <div class="nav-container">
+        <button id="getEstimateBtn" class="estimate-btn">Get Free Estimate</button>
+    </div>
+</nav>
+
+<!-- Estimate Form -->
+<div id="estimateForm" class="hidden">
+    <!-- Step 1: Floor Plan Selection -->
+    <div class="form-step" id="step1">
+        <h2>Your Floor Plan</h2>
+        <div class="floor-plan">
+            <button data-value="1BHK" class="button">1 BHK</button>
+            <button data-value="2BHK" class="button">2 BHK</button>
+            <button data-value="3BHK" class="button">3 BHK</button>
+            <button data-value="3+BHK" class="button">3+ BHK</button>
+        </div>
+
+        <h3>Purpose</h3>
+        <div class="purpose">
+            <button data-value="Move In">Move In</button>
+            <button data-value="Rent Out">Rent Out</button>
+            <button data-value="Renovate">Renovate</button>
+        </div>
+
+        <button class="next-btn" data-next="2">Next</button>
+    </div>
+
+    <!-- Step 2: Interior Design Cost Estimator -->
+    <div class="form-step hidden" id="step2">
+        <h2>Interior Design Cost Estimator</h2>
+        
+        <div class="category-item">
+            <label>Kitchen</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Kitchen">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹50000</span> -->
+        </div>
+
+        <div class="category-item">
+            <label>Living Area</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Living Area">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹40000</span> -->
+        </div>
+
+        <div class="category-item">
+            <label>Bedroom</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Bedroom">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹35000</span> -->
+        </div>
+
+        <div class="category-item">
+            <label>Balcony</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Balcony">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹20000</span> -->
+        </div>
+        <div class="category-item">
+            <label>Washroom Interiors</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Washroom Interiors">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹20000</span> -->
+        </div>
+        <div class="category-item">
+            <label>Wall Decor</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Wall Decor">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹20000</span> -->
+        </div>
+        <div class="category-item">
+            <label>Dinning Area</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Dinning Area">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹20000</span> -->
+        </div>
+        <div class="category-item">
+            <label>Flooring</label>
+            <button class="quantity-btn" data-type="decrease">-</button>
+            <span class="quantity-input" data-category="Flooring">0</span>
+            <button class="quantity-btn" data-type="increase">+</button>
+            <!-- <span class="price">₹20000</span> -->
+        </div>
+        <button class="back-btn" data-prev="1">Back</button>
+        <button class="next-btn" data-next="3">Next</button>
+    </div>
+
+    <!-- Step 3: Final Form -->
+    <div class="form-step hidden" id="step3">
+        <h2>Your interior estimate is almost ready!</h2>
+        <!-- Total Price Display -->
+        <h3 id="totalPriceDisplay">Total Estimate: ₹0</h3>
+        <b>Note:</b>
+        <h4>It is Estimate Price only It may vary with original price</h4>
+        <!-- <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <input type="tel" placeholder="Your Phone">
+
+        <button class="back-btn" data-prev="2">Back</button>
+        <button class="estimate-btn">Get My Estimate</button> -->
+    </div>
+</div>
+
+</body>
+</html>
+
+    

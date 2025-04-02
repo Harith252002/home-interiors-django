@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'cat.css' %}">
+</head>
+<body>
+    {% if data1 %}
+    <nav id="nav_bar">
+        <li><img src="{% static 'images/logo1.png' %}" alt="Logo" id="logo_img"></li>
+        {% for i in data1 %}
+            <a href="{% url 'category:cateogries' i.id %}">{{ i.category_name }}</a>
+        {% endfor %}
+    </nav>
+   {% endif %}
+   <br><br>
+   {% for i in data %}
+    <div id="container">
+       <a href="{% url 'category:cateogries_details' i.id %}"><img src="{{i.pic.url }}" alt="" id="sub_img"></a> 
+       <h1>{{i.name}}</h1>
+       <!-- <h1>{{i.desc}}</h1> -->
+       <h1>{{i.dimensions}}</h1>
+    </div>
+    {% endfor %}
+
+    <div id="div1">
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>We provide high-quality home interior solutions tailored to your style and budget.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'app:home' %}">Home Interiors</a></li>
+                        <li><a href="{% url 'app:business' %}">Business Interiors</a></li>
+                        <li><a href="{% url 'category:contactus' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: haritha@yhomeinteriors.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Address: Hyderabad, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <br>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <br>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Home Interiors. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+     
+</body>
+</html>

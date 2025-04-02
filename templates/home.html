@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <!-- Add this in the <head> section to include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+</head>
+
+<script>
+    function toggleDropdown() {
+    var dropdown = document.getElementById('drop_down');
+    
+    // Check the current state of the dropdown
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';  // If it's hidden, show it
+        
+        // Set a timeout to hide it after 10 seconds
+        setTimeout(function() {
+            dropdown.style.display = 'none';  // Hide after 10 seconds
+        }, 5000);  // 10 seconds (10000 milliseconds)
+    } else {
+        dropdown.style.display = 'none';  // If it's visible, hide it
+    }
+}
+function toggleSearch() {
+        var form = document.getElementById("search-form");
+        if (form.style.display === "none" || form.style.display === "") {
+            form.style.display = "flex"; // Show input box
+            document.getElementById("search-input").focus(); // Auto-focus on input
+        } else {
+            form.style.display = "none"; // Hide input box when clicking again
+        }
+    }
+</script>
+<body>
+    {% if data %}
+    <nav id="main_nav">
+        <ul>
+            <!-- Logo -->
+            <li><img src="{% static 'images/logo1.png' %}" alt="Logo" id="logo_img"></li>
+            <!-- Dropdown trigger (Design Ideas link) -->
+            <li class="dropdown" id="dropdown">
+                <a href="javascript:void(0);" onclick="toggleDropdown()">Home Interiors</a>
+                
+                <!-- Dropdown menu (initially hidden) -->
+                <ul id="drop_down" style="display: none;">
+                    {% for i in data %}
+                        <li><a href="{% url 'category:cateogries' i.id %}" >{{ i.category_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <a href="{% url 'app:business' %}" id="business"><li>Business Interiors</li></a>
+            <a href="{% url 'app:get' %}" id="Estimation"><li>Get Estimation</li></a>
+            <a href="{% url 'category:contactus' %}" id="contactus"><li id="contactus" class="dropdown">Contact Us</li></a>
+            <div class="search-container">
+                <i class="fa fa-search search-icon" onclick="toggleSearch()"></i> <!-- Search Icon -->
+                <form method="GET" action="{% url 'category:search_redirect' %}" class="search-form" id="search-form">
+                    <input type="text" name="q" placeholder="Search..." id="search-input">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            
+            
+            <a href="{% url 'app:login' %}" class="login-icon" id="login-icon">
+                <i class="fas fa-user" style="color: #1f4e51;"></i>
+            </a>
+            
+        </ul>
+    </nav>
+{% endif %}
+
+<br><br>
+<main>
+    <img src="{% static 'images/mainhome.png' %}" alt="" id="main_img">
+</main>
+<div class="scrolling-text-container">
+    <span class="scrolling-text">
+        Transforming Spaces, Elevating Lifestyles – Your Dream Home Awaits!
+    </span>
+</div>
+{% for i in data %}
+    
+    <div id="container">
+        <a href="{% url 'category:cateogries' i.id %}">
+            <img src="{{ i.pic.url }}" alt="category_pic" id="sub_img"></a>
+            <h1 id="sub_cat">{{ i.category_name }}</h1>
+    </div>
+    
+{% endfor %}
+<div id="div1">
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We provide high-quality home interior solutions tailored to your style and budget.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'app:home' %}">Home Interiors</a></li>
+                    <li><a href="{% url 'app:business' %}">Business Interiors</a></li>
+                    <li><a href="{% url 'category:contactus' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: haritha@yhomeinteriors.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Address: Hyderabad, India</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <br>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <br>
+                <a href="https://www.twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Home Interiors. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+
+ 
