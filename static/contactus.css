@@ -75,3 +75,33 @@ button:hover {
 #sumbit1{
     width: fit-content;
 }
+/* Default styles for desktop */
+body {
+    font-size: 16px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        width: 90%;
+    }
+}
+
+/* Responsive styles for mobile phones */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    .container {
+        width: 95%;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
