@@ -109,7 +109,7 @@ img {
      
 }
 #main_img{
-    width: 100%;
+    width: 3000px;
     height: 500px;
 }
 #container{
@@ -231,8 +231,8 @@ footer {
 }
 footer{
     position:absolute;
-    top: 3050px;
-    width: 100%;
+    top: 2550px;
+    width: 3000px;
 }
 /* Marquee Effect for Main Image */
 /* Marquee Effect for Main Image */
