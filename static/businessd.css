@@ -150,21 +150,19 @@ footer {
     padding-top: 10px;
 }
 
-html, body {
-    height: 100%; /* Make sure the body takes the full height */
-    display: flex;
-    flex-direction: column;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-section {
+        margin-bottom: 20px;
+    }
 }
-
-#content {
-    flex: 1; /* Pushes the footer down */
-}
-
-footer {
+footer{
+    position:absolute;
+    top: 2350px;
     width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    position: relative; /* Remove absolute positioning */
 }
-
