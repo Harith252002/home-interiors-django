@@ -11,7 +11,7 @@
     {% if data %}
     <nav id="nav_bar">
         
-        <li><img src="{% static 'images/Logo1.png' %}" alt="Logo" id="logo_img"></li>
+        <li><img src="{% static 'images/logo1.png' %}" alt="Logo" id="logo_img"></li>
         <li>
         {% for i in data %}
             <a href="{% url 'category:business_cateogries' i.id %}">{{ i.category_name }}</a>
