@@ -91,38 +91,41 @@
         <!-- Add to Cart button -->
         <a class="buy-now-button" href="{% url 'cart:add_to_cart' data.id %}" id="add_to_cart">Add to Cart</a>
     </div>
-
-    <!-- Consultation Modal -->
     <div id="consultationModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Talk to a Designer</h2>
-            <br><br>
-            <form method="post" action="{% url 'cart:book_consultation' %}" id="consultationForm">
-                {% csrf_token %}
-                <label for="name">Name</label>
-                <input type="text" name="name" placeholder="Name" required class="input_box">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Talk to a Designer</h2>
                 <br><br>
-                <label for="email">Email</label>
-                <input type="email" name="email" placeholder="Email" required class="input_box">
-                <br><br>
-                <label for="phone">Phone</label>
-                <input type="tel" name="phone" placeholder="Phone Number" required class="input_box">
-                <br><br>
-                <label for="category_name">Category</label>
-                <input type="text" name="category_name" placeholder="Property Name" required class="input_box">
-                <br><br>
-                <button type="submit" class="buy-now-button" id="consultation">Book Consultation</button>
-                <br>
-                <!-- Success message -->
-                <div id="successMessage">Consultation booked successfully!</div>
-            </form>
+                <form id="consultationForm">
+                    {% csrf_token %}
+                    <label for="name">Name</label>
+                    <input type="text" name="name" placeholder="Name" required class="input_box">
+                    <br><br>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" placeholder="Email" required class="input_box">
+                    <br><br>
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="input_box">
+                    <br><br>
+                    <label for="category_name">Category</label>
+                    <input type="text" name="category_name" placeholder="Property Name" required class="input_box">
+                    <br><br>
+                    <!-- <input type="checkbox" id="whatsappUpdates" name="whatsapp" checked class="input_box">
+                    <label for="whatsappUpdates">Send me updates on WhatsApp</label>
+                    <br><br> -->
+                    <button type="submit" class="buy-now-button" id="consultation">Book Consultation</button>
+                    <br>
+                </form>
+                
+                <!-- Success Message -->
+                <p id="successMessage" style="color: green; display: none;">Consultation booked successfully!</p>
+                <p id="errorMessage" style="color: red; display: none;"></p>
+                
+            </div>
         </div>
     </div>
-
     <script>
-          
-                 document.getElementById("openModal").addEventListener("click", function(event) {
+        document.getElementById("openModal").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("consultationModal").style.display = "flex";
         });
@@ -171,8 +174,8 @@
             });
         });
     </script>
-
     <div id="div1">
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
         <footer>
             <div class="footer-container">
                 <div class="footer-section">
@@ -215,3 +218,4 @@
     </div>
 </body>
 </html>
+     
