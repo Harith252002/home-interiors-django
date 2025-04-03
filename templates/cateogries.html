@@ -10,7 +10,7 @@
 <body>
     {% if data1 %}
     <nav id="nav_bar">
-        <li><img src="{% static 'images/Logo1.png' %}" alt="Logo" id="logo_img"></li>
+        <li><img src="{% static 'images/logo1.png' %}" alt="Logo" id="logo_img"></li>
         {% for i in data1 %}
             <a href="{% url 'category:cateogries' i.id %}">{{ i.category_name }}</a>
         {% endfor %}
