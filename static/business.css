@@ -264,4 +264,76 @@ img {
     height: auto;
     display: block;
 }
+/* Ensure the body and html take full height */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content wrapper */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image Container - Maintains Consistent Image Size */
+#container {
+    width: 400px;  
+    height: 500px;
+    border: 5px solid gray;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px auto;  /* Centers the container */
+}
+
+/* Image Sizing - No Distortion */
+#sub_img {
+    width: 100%;
+    height: auto;
+    border-radius: 23px;
+    object-fit: cover; /* Ensures no distortion */
+}
+
+/* Footer - Stays at Bottom */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #container {
+        width: 90%;
+        height: auto;
+    }
+    
+    #sub_img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #container {
+        width: 95%;
+    }
+
+    #sub_img {
+        width: 100%;
+        height: auto;
+    }
+}
 
