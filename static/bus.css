@@ -142,38 +142,57 @@ footer{
     top: 2350px;
     width: 100%;
 }
-/* Default styles for desktop */
-body {
-    font-size: 16px;
-    max-width: 1200px;
-    margin: auto;
+ /* Ensure the body takes full height */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Responsive styles for tablets */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    .container {
-        width: 90%;
-    }
+/* Main content wrapper to push the footer down */
+main {
+    flex: 1;
 }
 
-/* Responsive styles for mobile phones */
-@media (max-width: 480px) {
-    body {
-        font-size: 12px;
-    }
-    .container {
-        width: 95%;img {
-    max-width: 100%;
+/* Image container for proper alignment */
+#container {
+    width: 100%;
+    max-width: 550px;
     height: auto;
-    display: block;
+    border: 5px solid gray;
+    margin: 40px auto; /* Center align */
+    border-radius: 30px;
+    background-color: rgba(211, 211, 211, 0.36);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-    }
-    img {
-        max-width: 100%;
-        height: auto;
+/* Make images responsive */
+#sub_img {
+    width: 100%; /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 23px;
+    object-fit: cover;
+}
+
+/* Fix footer at the bottom */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #container {
+        width: 90%;
     }
 }
