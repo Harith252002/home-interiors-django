@@ -127,7 +127,7 @@ img {
     border-radius: 23px;
     filter: grayscale(0%);
     transition: filter 0.3s ease-in-out;
-    position:fixed;
+
     
 }
 #sub_cat{
